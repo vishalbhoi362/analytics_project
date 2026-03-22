@@ -1,0 +1,152 @@
+version: 2
+
+sources:
+  - name: healthcare_raw
+    description: "Raw healthcare data loaded from CSV files into Snowflake"
+    database: source_dbt_db
+    schema: source_dbt_schema
+
+    tables:
+
+      - name: stg_campaign
+        description: "Raw campaign marketing data"
+        columns:
+          - name: campaign_id
+            description: "Unique campaign identifier"
+            tests:
+              - not_null
+              - unique
+
+      - name: stg_campaign_email
+        description: "Email interactions from campaigns"
+        columns:
+          - name: email_id
+            description: "Unique email interaction id"
+            tests:
+              - not_null
+              - unique
+
+      - name: stg_campaign_event
+        description: "Campaign event marketing activities"
+        columns:
+          - name: event_id
+            description: "Unique event identifier"
+            tests:
+              - not_null
+              - unique
+
+      - name: stg_campaign_phone
+        description: "Phone call campaign interactions"
+        columns:
+          - name: call_id
+            description: "Unique call identifier"
+            tests:
+              - not_null
+              - unique
+
+      - name: stg_drug
+        description: "Drug master data"
+        columns:
+          - name: drug_id
+            description: "Unique drug identifier"
+            tests:
+              - not_null
+              - unique
+
+      - name: stg_hcp
+        description: "Healthcare professional master data"
+        columns:
+          - name: hcp_id
+            description: "Unique healthcare professional identifier"
+            tests:
+              - not_null
+              - unique
+
+      - name: stg_hospital
+        description: "Hospital master data"
+        columns:
+          - name: hospital_id
+            description: "Unique hospital identifier"
+            tests:
+              - not_null
+              - unique
+
+      - name: stg_region
+        description: "Region lookup table"
+        columns:
+          - name: region_code
+            description: "Region identifier"
+            tests:
+              - not_null
+              - unique
+
+      - name: stg_rep
+        description: "Sales representative data"
+        columns:
+          - name: rep_id
+            description: "Unique sales representative identifier"
+            tests:
+              - not_null
+              - unique
+
+      - name: stg_specialty
+        description: "Medical specialty lookup"
+        columns:
+          - name: specialty_code
+            description: "Specialty identifier"
+            tests:
+              - not_null
+              - unique
+
+      - name: stg_product_line
+        description: "Product line classification"
+        columns:
+          - name: product_line_code
+            description: "Product line identifier"
+            tests:
+              - not_null
+              - unique
+
+      - name: stg_therapeutic_area
+        description: "Therapeutic area classification"
+        columns:
+          - name: therapeutic_area_code
+            description: "Therapeutic area identifier"
+            tests:
+              - not_null
+              - unique
+
+      - name: stg_channel_codes
+        description: "Marketing channel lookup table"
+        columns:
+          - name: channel_code
+            description: "Channel identifier"
+            tests:
+              - not_null
+              - unique
+
+      - name: fact_sales
+        description: "Sales transaction fact table"
+        columns:
+          - name: sales_id
+            description: "Unique sales transaction identifier"
+
+      - name: fact_prescription
+        description: "Prescription transaction fact table"
+        columns:
+          - name: prescription_id
+            description: "Unique prescription identifier"
+
+      - name: fact_campaign_response
+        description: "Campaign performance metrics"
+        columns:
+          - name: performance_id
+            description: "Unique campaign performance identifier"
+
+      - name: fact_rep_performance
+        description: "Drug inventory tracking"
+        columns:
+          - name: inventory_id
+            description: "Unique inventory record identifier"
+            
+      
